@@ -1,0 +1,31 @@
+[user]
+	name = rob
+	email = rob@partidosurrealista.com
+[alias]
+	st = status
+	ci = commit
+	co = checkout
+	br = branch
+[merge]
+	tool = opendiff
+	summary = true
+	ff = false
+[core]
+	excludesfile = ~/.gitignore
+	editor = nano
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+	interactive = auto
+[push]
+	default = current
+
+[hub]
+protocol = https
+
+[credential]
+	helper = osxkeychain
+[filter "media"]
+	clean = git-media-clean %f
+	smudge = git-media-smudge %f
