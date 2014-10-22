@@ -1,3 +1,4 @@
+export ZSH_CUSTOM=$HOME/.dotfiles/zsh-stuff
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.dotfiles/oh-my-zsh
 
@@ -5,7 +6,7 @@ export ZSH=$HOME/.dotfiles/oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="agnoster"
+ZSH_THEME="unrob"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -93,7 +94,9 @@ export LC_TIME="en_US.UTF-8"
 export LC_ALL="en_US.UTF-8"
 
 export NPM_PACKAGES="/usr/local/npm"
-export GEM_HOME=/usr/local/gems
+export GEM_HOME="/usr/local/gems"
+export GEM_PATH="/usr/local/gems"
+export GOPATH="/usr/local/go"
 
 CDPATH=".:~:~/Sites"
 
