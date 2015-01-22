@@ -46,7 +46,7 @@ ZSH_THEME="unrob"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git brew coffee lol npm osx)
+plugins=(git brew coffee lol npm osx zsh-syntax-highlighting)
 
 autoload zmv
 
@@ -96,7 +96,7 @@ export LC_ALL="en_US.UTF-8"
 export NPM_PACKAGES="/usr/local/npm"
 export GEM_HOME="/usr/local/gems"
 export GEM_PATH="/usr/local/gems"
-export GOPATH="/usr/local/go"
+export GOPATH="/usr/local/go-src"
 
 CDPATH=".:~:~/Sites"
 
