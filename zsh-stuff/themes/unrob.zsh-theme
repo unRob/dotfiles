@@ -1,28 +1,24 @@
-SEGMENT_SEPARATOR=''
-
-prompt_dir() {
-  prompt_segment yellow black '%3~'
-}
-
 prompt_git() {
-  local ref dirty mode repo_path
+  local ref dirty mode repo_path status_bg status_fg
   repo_path=$(git rev-parse --git-dir 2>/dev/null)
 
   if $(git rev-parse --is-inside-work-tree >/dev/null 2>&1); then
     dirty=$(parse_git_dirty)
     ref=$(git symbolic-ref HEAD 2> /dev/null) || ref="➦ $(git show-ref --head -s --abbrev |head -n1 2> /dev/null)"
     if [[ -n $dirty ]]; then
-      prompt_segment none yellow
+      status_bg="$fg[yellow]"
+      # status_fg="$bg[cyan]"
     else
-      prompt_segment none green
+      status_bg="$fg[cyan]"
+      # status_bg="$bg[cyan]"
     fi
 
     if [[ -e "${repo_path}/BISECT_LOG" ]]; then
-      mode=" <B>"
+      mode="<B> "
     elif [[ -e "${repo_path}/MERGE_HEAD" ]]; then
-      mode=" >M<"
+      mode=">M< "
     elif [[ -e "${repo_path}/rebase" || -e "${repo_path}/rebase-apply" || -e "${repo_path}/rebase-merge" || -e "${repo_path}/../.dotest" ]]; then
-      mode=" >R>"
+      mode=">R> "
     fi
 
     setopt promptsubst
@@ -36,70 +32,36 @@ prompt_git() {
     zstyle ':vcs_info:*' formats ' %u%c'
     zstyle ':vcs_info:*' actionformats ' %u%c'
     vcs_info
-    echo -n "${ref/refs\/heads\//❮}${vcs_info_msg_0_%% }❯${mode}"
+    print -Pr "%{${status_bg}%}:${mode}${ref/refs\/heads\//}${vcs_info_msg_0_%% } %{${reset_color}%}"
   fi
 }
 
-prompt_segment() {
-  local bg fg
-  [[ -n $1 ]] && bg="%K{$1}" || bg="%k"
-  [[ -n $2 ]] && fg="%F{$2}" || fg="%f"
-  if [[ $CURRENT_BG != 'NONE' && $1 != $CURRENT_BG ]]; then
-    echo -n "%{$bg%F{$CURRENT_BG}%}$SEGMENT_SEPARATOR%{$fg%} "
-  else
-    echo -n "%{$bg%}%{$fg%}"
-  fi
-  CURRENT_BG=$1
-  [[ -n $3 ]] && echo -n $3
-}
-
-# End the prompt, closing any open segments
 prompt_end() {
-  if [[ -n $CURRENT_BG ]]; then
-    echo -n " %{%k%F{$CURRENT_BG}%}$SEGMENT_SEPARATOR"
-  else
-    echo -n "%{%k%}"
-  fi
-  # echo -n "%{%f%}"
-  echo "\n$fg[blue]❯$reset_color"
-  CURRENT_BG=''
+  echo "%B%{$fg[cyan]%}→%b%{${reset_color}%}"
 }
 
-prompt_context() {
-  local user=`whoami`
-
-  if [[ "$user" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
-    prompt_segment black default "%(!.%{%F{yellow}%}.)$user@%m"
-  fi
-}
-
-prompt_status() {
-  local symbols
-  symbols=()
-  [[ $RETVAL -ne 0 ]] && symbols+="⚠️ "
-  [[ $UID -eq 0 ]] && symbols+="%{%F{yellow}%}✪"
-  [[ $(jobs -l | wc -l) -gt 0 ]] && symbols+="%{%F{cyan}%}⚙"
-
-  [[ -n "$symbols" ]] && echo -n "$symbols"
-}
-
-prompt_date() {
-   prompt_segment black blue "$(date +"%H:%M") "
-}
-
-
-build_prompt() {
-  RETVAL=$?
+build_rprompt () {
   prompt_status
-  prompt_date
-  prompt_context
-  prompt_dir
-  prompt_git
-  prompt_end
 }
 
-preexec() { print "" }
-precmd() {print ""}
+precmd() {
+  RETVAL=$?
 
-# RPROMPT=
-PROMPT='$(build_prompt) '
+  setopt promptsubst
+  echo ""
+
+  local status_color
+  if [[ $RETVAL -ne 0 ]]; then
+    status_color="$fg[red]"
+  else
+    status_color="$fg[green]"
+  fi
+
+  print -Pr "%{${status_color}%}• %B%{$fg[cyan]%}%3~%b$(prompt_git)"
+}
+
+#
+preexec() { print "" }
+# setopt PROMPT_SUBST
+PROMPT='$(prompt_end) '
+# PROMPT='$(prompt_end) '

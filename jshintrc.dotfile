@@ -3,11 +3,14 @@
 		"$": true,
 		"console": true
 	},
+	"asi": true,
 	"browser": true,
 	"white": false,
 	"nomen": false,
 	"undef": false,
 	"unused": false,
 	"plusplus": false,
-	"regexp": true
+	"regexp": true,
+	"esnext": true,
+	"noyield": true
 }
