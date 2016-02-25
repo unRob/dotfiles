@@ -186,11 +186,15 @@
 	<string>1, 4</string>
 	<key>NSNavLastRootDirectory</key>
 	<string>~/.dotfiles</string>
+	<key>NSNavPanelExpandedSizeForOpenMode</key>
+	<string>{712, 448}</string>
 	<key>NSQuotedKeystrokeBinding</key>
 	<string></string>
 	<key>NSRepeatCountBinding</key>
 	<string></string>
 	<key>NSScrollAnimationEnabled</key>
+	<false/>
+	<key>NSScrollViewShouldScrollUnderTitlebar</key>
 	<false/>
 	<key>NSTableView Columns KeyBingingTable</key>
 	<array>
@@ -203,7 +207,7 @@
 		BAtzdHJlYW10eXBlZIHoA4QBQISEhAhOU1N0cmluZwGEhAhOU09iamVjdACF
 		hAErATGG
 		</data>
-		<string>302</string>
+		<string>322</string>
 	</array>
 	<key>NSTableView Hidden Columns KeyBingingTable</key>
 	<array/>
@@ -215,17 +219,19 @@
 		<integer>1</integer>
 	</dict>
 	<key>NSWindow Frame NSColorPanel</key>
-	<string>396 568 212 309 0 0 1440 877 </string>
+	<string>559 228 212 309 0 0 1440 900 </string>
 	<key>NSWindow Frame NSFontPanel</key>
 	<string>-930 -295 445 270 -1680 -383 1680 1028 </string>
 	<key>NSWindow Frame Preferences</key>
-	<string>442 392 924 485 0 0 1440 877 </string>
+	<string>442 421 606 456 0 0 1440 900 </string>
 	<key>NSWindow Frame UKCrashReporter</key>
 	<string>230 833 592 584 0 0 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 8 810 888 0 0 1440 900 </string>
+	<string>167 174 810 548 0 0 1440 900 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>290 207 810 528 0 0 1440 900 </string>
+	<string>186 32 920 868 0 0 1440 900 </string>
+	<key>NSWindow Frame iTerm Window 2</key>
+	<string>1643 1096 810 548 1440 436 2560 1440 </string>
 	<key>New Bookmarks</key>
 	<array>
 		<dict>
@@ -2907,6 +2913,8 @@
 			<false/>
 			<key>Background Image Location</key>
 			<string></string>
+			<key>Badge Text</key>
+			<string></string>
 			<key>Blend</key>
 			<real>0.30000001192092896</real>
 			<key>Blink Allowed</key>
@@ -2934,6 +2942,8 @@
 			<integer>80</integer>
 			<key>Command</key>
 			<string></string>
+			<key>Cursor Boost</key>
+			<real>0.11329113924050634</real>
 			<key>Cursor Color</key>
 			<dict>
 				<key>Blue Component</key>
@@ -3553,6 +3563,8 @@
 			<array/>
 			<key>Terminal Type</key>
 			<string>xterm</string>
+			<key>Thin Strokes</key>
+			<integer>1</integer>
 			<key>Transparency</key>
 			<real>0.0</real>
 			<key>Triggers</key>
@@ -3565,8 +3577,10 @@
 			<true/>
 			<key>Use Canonical Parser</key>
 			<false/>
-			<key>Use Italic Font</key>
+			<key>Use Cursor Guide</key>
 			<false/>
+			<key>Use Italic Font</key>
+			<true/>
 			<key>Vertical Spacing</key>
 			<real>1.2445365190505981</real>
 			<key>Visual Bell</key>
@@ -3577,12 +3591,26 @@
 			<string>/Users/rob</string>
 		</dict>
 	</array>
+	<key>NoSyncCommandHistoryHasEverBeenUsed</key>
+	<true/>
+	<key>NoSyncDoNotWarnBeforeMultilinePaste</key>
+	<true/>
+	<key>NoSyncDoNotWarnBeforeMultilinePaste_selection</key>
+	<integer>0</integer>
+	<key>NoSyncHaveShownPromoWithId_4</key>
+	<true/>
 	<key>NoSyncNeverRemindPrefsChangesCopy</key>
 	<true/>
+	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
+	<true/>
+	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
+	<integer>0</integer>
+	<key>NoSyncTimeOfFirstLaunchOfVersionWithTip</key>
+	<real>477689017.92614597</real>
 	<key>NoSyncTimeOfLastPromo</key>
-	<real>453496465.42685199</real>
+	<real>477688816.91715598</real>
 	<key>NoSyncTimeOfLastPromoDownload</key>
-	<real>474789172.37918299</real>
+	<real>477633013.72013003</real>
 	<key>OnlyWhenMoreTabs</key>
 	<true/>
 	<key>OpenArrangementAtStartup</key>
@@ -3644,12 +3672,14 @@
 	<integer>3</integer>
 	<key>SUEnableAutomaticChecks</key>
 	<true/>
+	<key>SUFeedAlternateAppNameKey</key>
+	<string>iTerm</string>
 	<key>SUFeedURL</key>
-	<string>https://iterm2.com/appcasts/testing.xml</string>
+	<string>https://iterm2.com/appcasts/testing3.xml</string>
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2016-01-18T06:58:24Z</date>
+	<date>2016-02-20T03:47:16Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>Show Toolbelt</key>
@@ -3674,6 +3704,11 @@
 	<false/>
 	<key>TmuxDashboardLimit</key>
 	<integer>10</integer>
+	<key>ToolbeltTools</key>
+	<array>
+		<string>Command History</string>
+		<string>Paste History</string>
+	</array>
 	<key>TripleClickSelectsFullWrappedLines</key>
 	<false/>
 	<key>UKCrashReporterLastCrashReportDate</key>
@@ -4621,6 +4656,6 @@
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>2.1.4</string>
+	<string>2.9.20160206</string>
 </dict>
 </plist>
