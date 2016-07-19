@@ -5,6 +5,8 @@ prompt_git() {
   if $(git rev-parse --is-inside-work-tree >/dev/null 2>&1); then
     dirty=$(parse_git_dirty)
     ref=$(git symbolic-ref HEAD 2> /dev/null) || ref="➦ $(git show-ref --head -s --abbrev |head -n1 2> /dev/null)"
+    # Italic text de la manera mas pendeja que pude hacerme
+    ref=$'\e[3m'"${ref/refs\/heads\//}"$'\e[23m'
     if [[ -n $dirty ]]; then
       status_bg="$fg[yellow]"
       # status_fg="$bg[cyan]"
@@ -32,7 +34,7 @@ prompt_git() {
     zstyle ':vcs_info:*' formats ' %u%c'
     zstyle ':vcs_info:*' actionformats ' %u%c'
     vcs_info
-    print -Pr "%{${status_bg}%}:${mode}${ref/refs\/heads\//}${vcs_info_msg_0_%% } %{${reset_color}%}"
+    print -Pr "%{${status_bg}%}:${ref}${vcs_info_msg_0_%% } ${mode}%{${reset_color}%}"
   fi
 }
 
