@@ -6,6 +6,8 @@
 	<true/>
 	<key>AllowClipboardAccess</key>
 	<false/>
+	<key>AlternateMouseScroll</key>
+	<true/>
 	<key>AnimateDimming</key>
 	<false/>
 	<key>AppleAntiAliasingThreshold</key>
@@ -223,15 +225,17 @@
 	<key>NSWindow Frame NSFontPanel</key>
 	<string>-930 -295 445 270 -1680 -383 1680 1028 </string>
 	<key>NSWindow Frame Preferences</key>
-	<string>442 421 606 456 0 0 1440 900 </string>
+	<string>442 434 606 456 0 0 1440 900 </string>
+	<key>NSWindow Frame SUUpdateAlert</key>
+	<string>410 209 620 622 0 0 1440 900 </string>
 	<key>NSWindow Frame UKCrashReporter</key>
 	<string>230 833 592 584 0 0 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>167 174 810 548 0 0 1440 900 </string>
+	<string>0 12 1440 888 0 0 1440 900 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>186 32 920 868 0 0 1440 900 </string>
+	<string>4 348 810 548 0 0 1440 900 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
-	<string>1643 1096 810 548 1440 436 2560 1440 </string>
+	<string>472 117 810 548 0 0 1440 900 </string>
 	<key>New Bookmarks</key>
 	<array>
 		<dict>
@@ -3599,12 +3603,16 @@
 	<integer>0</integer>
 	<key>NoSyncHaveShownPromoWithId_4</key>
 	<true/>
+	<key>NoSyncInstallationId</key>
+	<string>040D46C3-08DC-40A6-8F6E-9AA2BAC3B5B5</string>
 	<key>NoSyncNeverRemindPrefsChangesCopy</key>
 	<true/>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
 	<true/>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
 	<integer>0</integer>
+	<key>NoSyncPermissionToShowTip</key>
+	<false/>
 	<key>NoSyncTimeOfFirstLaunchOfVersionWithTip</key>
 	<real>477689017.92614597</real>
 	<key>NoSyncTimeOfLastPromo</key>
@@ -3625,6 +3633,8 @@
 	<false/>
 	<key>PasteFromClipboard</key>
 	<false/>
+	<key>PasteTabToStringTabStopSize</key>
+	<integer>2</integer>
 	<key>PointerActions</key>
 	<dict>
 		<key>Button,1,1,,</key>
@@ -3660,6 +3670,8 @@
 	</dict>
 	<key>PrefsCustomFolder</key>
 	<string>/Users/rob/.dotfiles</string>
+	<key>Print In Black And White</key>
+	<true/>
 	<key>PromptOnClose</key>
 	<true/>
 	<key>PromptOnQuit</key>
@@ -3675,11 +3687,11 @@
 	<key>SUFeedAlternateAppNameKey</key>
 	<string>iTerm</string>
 	<key>SUFeedURL</key>
-	<string>https://iterm2.com/appcasts/testing3.xml</string>
+	<string>https://iterm2.com/appcasts/testing3.xml?shard=26</string>
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2016-02-20T03:47:16Z</date>
+	<date>2016-06-09T05:43:45Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>Show Toolbelt</key>
@@ -4656,6 +4668,6 @@
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>2.9.20160206</string>
+	<string>2.9.20160523</string>
 </dict>
 </plist>
