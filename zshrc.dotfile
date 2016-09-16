@@ -63,7 +63,7 @@ alias lol='cat ~/.dotfiles/oh-my-zsh/plugins/lol/lol.plugin.zsh'
 # User configuration
 
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
-export PATH="$PATH:/Users/rob/Dev/nix"
+export PATH="$PATH:$HOME/.dotfiles/bin"
 export PATH="$PATH:/usr/local/gems/bin"
 
 export EDITOR="nano"

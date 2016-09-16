@@ -1,0 +1,31 @@
+#!/bin/zsh
+
+cmd=$1
+shift 1
+
+PORT=${PORT:-80}
+REMOTE_HOST=${2:-rob.mx}
+REMOTE_PORT=${REMOTE_PORT:-6034}
+
+case "$cmd" in
+  start)
+    address="${REMOTE_PORT}:localhost:${PORT}"
+    echo "${address}"
+    ssh -M -S /tmp/myrtle.sock -fnNT -R "${address}" "${REMOTE_HOST}"
+    ;;
+  status)
+    ssh -S /tmp/myrtle.sock -O check $REMOTE_HOST | grep $PORT
+    ;;
+  stop)
+    ssh -S /tmp/myrtle.sock -O exit $REMOTE_HOST
+    ;;
+  *)
+    echo "Usage:"
+    echo "    [PORT=$PORT] myrtle [SUBCOMMAND] [REMOTE_HOST]"
+    echo "    myrtle -h                   Display this help message"
+    echo "    myrtle start                Start a tunnel"
+    echo "    myrtle stop                 Stop a tunnel"
+    echo "    myrtle status               Show status for a tunnel"
+    exit 1
+    ;;
+esac
