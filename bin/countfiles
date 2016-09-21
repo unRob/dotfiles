@@ -1,11 +1,10 @@
 #!/bin/bash
 
-FILES="$(ls -R ${1:-.})"
-
-
-if [ -n "$2" ]
-then
-  FILES=`grep -E "$2" <<< "${FILES}"`
-fi
-
-echo "${FILES}" | wc -l | tr -d ' '
+ls -R "${1:-.}" |
+  if [ -n "$2" ]; then
+    grep -E "$2"
+  else
+    cat
+  fi |
+  wc -l |
+  tr -d ' '
