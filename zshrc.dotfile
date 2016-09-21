@@ -49,6 +49,8 @@ ZSH_THEME="unrob"
 plugins=(git brew coffee lol npm osx zsh-syntax-highlighting)
 
 autoload zmv
+zle -N edit-command-line
+bindkey '\C-x\C-e' edit-command-line
 
 DEFAULT_USER="rob"
 source $ZSH/oh-my-zsh.sh
@@ -66,7 +68,8 @@ export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 export PATH="$PATH:$HOME/.dotfiles/bin"
 export PATH="$PATH:/usr/local/gems/bin"
 
-export EDITOR="nano"
+export EDITOR="vim"
+
 
 
 sha1 (){
