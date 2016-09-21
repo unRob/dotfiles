@@ -6,6 +6,8 @@
 	ci = commit
 	co = checkout
 	br = branch
+
+	l = "!. ~/.dotfiles/bin/git_helpers && pretty_git_log"
 [merge]
 	tool = opendiff
 	summary = true
