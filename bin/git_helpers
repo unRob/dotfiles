@@ -1,5 +1,4 @@
-#!/bin/bash
-
+#!/usr/bin/env zsh
 # Copiado de https://github.com/garybernhardt/dotfiles/blob/master/.githelpers
 
 HASH="%C(yellow)%h%Creset"

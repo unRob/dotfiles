@@ -46,7 +46,8 @@ ZSH_THEME="unrob"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git brew coffee lol npm osx zsh-syntax-highlighting)
+export NVM_LAZY_LOAD=true
+plugins=(git brew coffee lol npm osx zsh-syntax-highlighting zsh-nvm)
 
 autoload zmv
 zle -N edit-command-line
