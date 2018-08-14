@@ -1,92 +1,68 @@
-export ZSH_CUSTOM=$HOME/.dotfiles/zsh-stuff
+#!/usr/bin/env bash
+export DOTFILES="${HOME}/.dotfiles"
+export ZSH_CUSTOM=$DOTFILES/zsh-stuff
 # Path to your oh-my-zsh installation.
-export ZSH=$HOME/.dotfiles/oh-my-zsh
-
+export ZSH=$DOTFILES/oh-my-zsh
+# Uncomment the following line to change how often to auto-update (in days).
+export UPDATE_ZSH_DAYS=1
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="unrob"
-
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
-
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
-
-# Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-
+export ZSH_THEME="unrob"
 # Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
-
+export DISABLE_AUTO_TITLE="true"
 # Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
+export COMPLETION_WAITING_DOTS="true"
+# What to higlight in the shell prompt
+export ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
 
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# HIST_STAMPS="mm/dd/yyyy"
-
-# Would you like to use another custom folder than $`SH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-export NVM_LAZY_LOAD=true
-plugins=(git brew coffee lol npm osx zsh-syntax-highlighting zsh-nvm)
-
+# ----------------
+# Plugins
+# ----------------
+# load out-of-the-box plugins
+plugins=(git osx zsh_reload asdf)
+# load custom plugins
+plugins+=("${(@f)$(find -L "$DOTFILES/zsh-stuff/plugins" -type d -maxdepth 1 -mindepth 1 -exec basename "{}" \;)}")
+# zmv is mv for champions
 autoload zmv
+# control+x control+e to edit current command in $EDITOR
+autoload -z edit-command-line
 zle -N edit-command-line
 bindkey '\C-x\C-e' edit-command-line
 
-DEFAULT_USER="rob"
-source $ZSH/oh-my-zsh.sh
+# ----------------
+# Start oh-my-zsh
+# ----------------
+source "$ZSH/oh-my-zsh.sh"
 
+# ----------------
 # Aliases
+# ----------------
 alias g='git'
-alias psm='ssh psm'
-alias proxy='ssh -D 9999 psm'
-alias rake='noglob rake'
-alias lol='cat ~/.dotfiles/oh-my-zsh/plugins/lol/lol.plugin.zsh'
 
-# User configuration
-
+# ----------------
+# Paths
+# ----------------
+# Set the searth path for binaries, homebrew's first
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
-export PATH="$PATH:$HOME/.dotfiles/bin"
-export PATH="$PATH:/usr/local/gems/bin"
+# append our binaries
+export PATH="$PATH:$DOTFILES/bin"
+# then golang's
+export PATH="$PATH:${GOPATH//://bin:}/bin"
+# then node's
+export PATH="${HOME}/.yarn/bin:$PATH"
+# Please the golang pantheon
+export GOPATH="${HOME}/src/go"
+# Enable us to cd to anywhere in the current path, $HOME or $HOME/src
+CDPATH=".:~:~/src"
 
+# ----------------
+# Further config
+# ----------------
+# this is the editor used in git commit messages and all sorts of crazy stuff
 export EDITOR="vim"
-
-
-
-sha1 (){
-	echo -n $1 | openssl sha1
-}
-
-ip (){
-	dig -t A $1 +short
-}
-
-running () {
-	ps ax | grep $1 | grep -v grep
-}
-
-ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
-
+# Please en_US.utf8 all the things
 export LC_ALL="en_US.utf8"
 export LANG="en_US.UTF-8"
 export LC_COLLATE="en_US.UTF-8"
@@ -97,39 +73,12 @@ export LC_NUMERIC="en_US.UTF-8"
 export LC_TIME="en_US.UTF-8"
 export LC_ALL="en_US.UTF-8"
 
-export NPM_PACKAGES="/usr/local/npm"
-export GEM_HOME="/usr/local/gems"
-export GEM_PATH="/usr/local/gems"
-export GOPATH="/usr/local/go"
+# ----------------
+# Load version manager
+# ----------------
+. "${HOME}/.asdf/asdf.sh"
+. "${HOME}/.asdf/completions/asdf.bash"
 
-CDPATH=".:~:~/Sites"
-
-DISABLE_AUTO_TITLE="true"
-function wt () {
-    echo -ne "\e]1;$1\a"
-}
-# export MANPATH="/usr/local/man:$MANPATH"
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+# ----------------
+# Nasty stuff added by computars beyond
+# ----------------

@@ -9,7 +9,7 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'scrooloose/nerdtree'
+" Plugin 'scrooloose/nerdtree'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'godlygeek/tabular'
@@ -26,9 +26,9 @@ filetype plugin indent on    " required
 "    autocmd BufWritePost $MYVIMRC source $MYVIMRC
 "augroup END " }
 
-autocmd vimenter * NERDTree
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-map <C-k><C-b> :NERDTreeToggle<CR>
+" autocmd vimenter * NERDTree
+" autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+" map <C-k><C-b> :NERDTreeToggle<CR>
 
 syntax on
 set mouse=nicr
@@ -89,7 +89,7 @@ map j gj
 map k gk
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
-let g:NERDTreeChDirMode       = 2
+" let g:NERDTreeChDirMode       = 2
 let g:ctrlp_working_path_mode = 'rw'
 
 let g:vim_markdown_folding_disabled = 1
@@ -100,5 +100,4 @@ set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
 let g:syntastic_javascript_checkers = ['syntastic-html-eslint']
-
 

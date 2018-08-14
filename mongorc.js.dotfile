@@ -1,5 +1,0 @@
-var host = db.serverStatus().host.split('.')[0];
-
-prompt = function(){
-	return host+'@'+db+' > ';
-}
