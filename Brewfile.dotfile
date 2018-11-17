@@ -13,47 +13,81 @@ brew "ack"
 brew "cloc"
 brew "coreutils"
 brew "curl"
+# https://github.com/so-fancy/diff-so-fancy
+brew "diff-so-fancy"
 brew "dnsmasq"
+# digital-ocean
+brew "doctl"
 brew "exiftool"
 brew "ffmpeg"
 brew "fswatch"
 brew "geoip"
+# gifsicle --lossy
 brew "giflossy"
-brew "gifsicle"
 brew "git"
 brew "git-lfs"
-# https://github.com/so-fancy/diff-so-fancy
-brew "diff-so-fancy"
+brew "gnupg"
+# code highlighting
 brew "highlight"
 brew "imagemagick"
+# json magic
 brew "jq"
+# mac app store
 brew "mas"
+brew "mitmproxy"
+brew "pinentry"
+brew "readline"
+brew "shellcheck"
 brew "telnet"
 brew "unrar"
-# Apple provides zsh already?
-# brew "zsh"
-brew "shellcheck"
+brew "watch"
+# latest zsh
+brew "zsh"
 
-cask "1password-cli"
+cask "iterm2"
+cask "visual-studio-code"
+
+# quicklook zip
 cask "betterzipql"
+# quicklook source highlighter
 cask "qlcolorcode"
 cask "qlmarkdown"
+# quicklook text/plain
 cask "qlstephen"
 cask "quicklook-json"
+# nice ligatures for programming
 cask "font-fira-code"
 
+# backups
 cask "backblaze"
+# sharing
 cask "dropbox"
+# browsers
 cask "firefox"
 cask "google-chrome"
-cask "iterm2"
+
+# key remap
 cask "karabiner"
+
 cask "slack"
 cask "spotify"
 cask "spotify-notifier"
 cask "steam"
-cask "sublime-text"
+
+cask "1password-cli"
 cask "the-unarchiver"
 cask "transmission"
 
 mas "1Password 7", id: 1333542190
+mas "AdBlock", id: 1402042596
+mas "Sofortbild", id: 411729406
+mas "Airmail 2", id: 918858936
+mas "Tweetbot", id: 1384080005
+
+# apple stuff
+mas "GarageBand", id: 682658836
+mas "iMovie", id: 408981434
+mas "Keynote", id: 409183694
+mas "Numbers", id: 409203825
+mas "Pages", id: 409201541
+mas "Xcode", id: 497799835

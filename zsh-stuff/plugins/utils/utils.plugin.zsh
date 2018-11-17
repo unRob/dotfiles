@@ -1,3 +1,4 @@
+# shellcheck shell=bash
 ip (){
   # resolve a hostname to an ip address
   dig -t A "${${1%/}##*/}" +short
@@ -32,23 +33,24 @@ encrypt-folder() {
 }
 
 create-lifeboat() {
-  local output
-  output="./lifeboat-$(date -u +'%Y-%m-%dT%H-%M-%S').sh"
+  local output date
+  date=$(date -u +'%Y-%m-%dT%H-%M-%S')
+  output="./lifeboat-$date.sh"
 
-  cat >"$output" <<EOF
+  cat >"$output" <<'EOF'
 #!/usr/bin/env bash
-LIFEBOAT="\${HOME}/lifeboat/\$(date -u +'%Y-%m-%dT%H-%M-%S')"
-mkdir -pv "\$LIFEBOAT"
-openssl base64 -d <<DATA | openssl aes-256-cbc -d | tar xfz - -C "\$LIFEBOAT" --strip-components 1
+LIFEBOAT="${HOME}/lifeboat
+mkdir -pv "$LIFEBOAT"
+openssl base64 -d <<DATA | openssl aes-256-cbc -d | tar xfz - -C "$LIFEBOAT" --strip-components 1
 EOF
   if [[ -d "$1" ]]; then
-    echo "encrypting folder $1"
+    >&2 echo "encrypting folder $1"
     encrypt-folder "$1" >> "$output"
   elif [[ -f "$1" ]]; then
-    echo "encrypting file $1"
+    >&2 echo "encrypting file $1"
     aes-256 < "$1" >> "$output"
   else
-    echo "encrypting stdin"
+    >&2 echo "encrypting stdin"
     cat >> "$output"
   fi
 

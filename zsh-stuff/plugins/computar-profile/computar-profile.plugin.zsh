@@ -1,4 +1,5 @@
 if [[ -f "${HOME}/.config/computar/profile" ]]; then
+  # shellcheck disable=SC1090
   source "${HOME}/.config/computar/profile"
 fi
 
@@ -17,4 +18,3 @@ function create_computar_profile () {
   DEFAULT_EMAIL="$email"
 EOF
 }
-

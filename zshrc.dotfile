@@ -1,4 +1,5 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
+# shellcheck shell=bash
 export DOTFILES="${HOME}/.dotfiles"
 export ZSH_CUSTOM=$DOTFILES/zsh-stuff
 # Path to your oh-my-zsh installation.
@@ -34,6 +35,7 @@ bindkey '\C-x\C-e' edit-command-line
 # ----------------
 # Start oh-my-zsh
 # ----------------
+# shellcheck disable=1090
 source "$ZSH/oh-my-zsh.sh"
 
 # ----------------
@@ -76,7 +78,9 @@ export LC_ALL="en_US.UTF-8"
 # ----------------
 # Load version manager
 # ----------------
+# shellcheck disable=1090
 . "${HOME}/.asdf/asdf.sh"
+# shellcheck disable=1090
 . "${HOME}/.asdf/completions/asdf.bash"
 
 # ----------------
