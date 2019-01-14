@@ -71,7 +71,7 @@ cask "karabiner"
 
 cask "slack"
 cask "spotify"
-cask "spotify-notifier"
+cask "spotify-notifications"
 cask "steam"
 
 cask "1password-cli"
