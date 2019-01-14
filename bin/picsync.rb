@@ -146,7 +146,7 @@ class Backblaze
 
   def download fileName, fileId, destination 
     url = "#{@downloadEndpoint}/b2api/v2/b2_download_file_by_id?fileId=#{fileId}"
-    File.open("#{destination}/#{fileName}", "w") do |file|
+    File.open("#{destination}/#{fileName.split("/").last}", "w") do |file|
       file.binmode
       self.class.get(url, headers: @headers, stream_body: true) do |fragment|
         file.write(fragment)
