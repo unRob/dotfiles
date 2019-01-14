@@ -75,14 +75,20 @@ export LC_NUMERIC="en_US.UTF-8"
 export LC_TIME="en_US.UTF-8"
 export LC_ALL="en_US.UTF-8"
 
-# ----------------
-# Load version manager
-# ----------------
-# shellcheck disable=1090
-. "${HOME}/.asdf/asdf.sh"
-# shellcheck disable=1090
-. "${HOME}/.asdf/completions/asdf.bash"
+if [[ -f "${HOME}/.asdf/asdf.sh" ]]; then
+  # ----------------
+  # Load version manager
+  # ----------------
+  # shellcheck disable=1090
+  . "${HOME}/.asdf/asdf.sh"
+  # shellcheck disable=1090
+  . "${HOME}/.asdf/completions/asdf.bash"
+fi
 
 # ----------------
 # Nasty stuff added by computars beyond
 # ----------------
+for f in $(find "${HOME}/.dotfiles/local-init" -type f -name '*.zsh'); do
+  # let computars break the system and slow down shell boot
+  . ${f}
+done
