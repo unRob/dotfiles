@@ -2,3 +2,6 @@
 --ignore-dir=node_modules/
 --ignore-dir=vendor/
 --ignore-dir=venv/
+--ignore-dir=.terraform/
+
+--ignore-file=match:/\.tfstate\.?.*/
