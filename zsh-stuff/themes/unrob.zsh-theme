@@ -63,7 +63,7 @@ precmd() {
 }
 
 #
-preexec() { print "" }
+preexec() { print ""; }
 # setopt PROMPT_SUBST
 PROMPT='$(prompt_end) '
 # PROMPT='$(prompt_end) '

@@ -41,8 +41,7 @@
 [push]
   default = current
 
-[hub]
-protocol = https
-
 [credential]
-  helper = osxkeychain
+	helper = osxkeychain
+[pull]
+	rebase = true

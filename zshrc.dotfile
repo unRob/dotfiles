@@ -17,12 +17,16 @@ export DISABLE_AUTO_TITLE="true"
 export COMPLETION_WAITING_DOTS="true"
 # What to higlight in the shell prompt
 export ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
+# Let asdf plugin know we're actually 100% sure there's zsh autocomplete available
+# https://github.com/ohmyzsh/ohmyzsh/pull/8837
+export ZSH_ASDF_YES_REALLY_ZSH="true"
+
 
 # ----------------
 # Plugins
 # ----------------
 # load out-of-the-box plugins
-plugins=(git osx zsh_reload asdf)
+plugins=(git osx zsh_reload)
 # load custom plugins
 plugins+=("${(@f)$(find -L "$DOTFILES/zsh-stuff/plugins" -type d -maxdepth 1 -mindepth 1 -exec basename "{}" \;)}")
 # zmv is mv for champions
@@ -75,15 +79,9 @@ export LC_NUMERIC="en_US.UTF-8"
 export LC_TIME="en_US.UTF-8"
 export LC_ALL="en_US.UTF-8"
 
-if [[ -f "${HOME}/.asdf/asdf.sh" ]]; then
-  # ----------------
-  # Load version manager
-  # ----------------
-  # shellcheck disable=1090
-  . "${HOME}/.asdf/asdf.sh"
-  # shellcheck disable=1090
-  . "${HOME}/.asdf/completions/asdf.bash"
-fi
+# sourcing asdf.sh from a plugin is not working for me, it does source but not
+# in the resulting shell :/
+source ~/.asdf/asdf.sh
 
 # ----------------
 # Nasty stuff added by computars beyond
@@ -92,3 +90,5 @@ for f in $(find "${HOME}/.dotfiles/local-init" -type f -name '*.zsh'); do
   # let computars break the system and slow down shell boot
   . ${f}
 done
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh" || true
