@@ -1,0 +1,48 @@
+#!/usr/bin/env bash
+
+search_filter='
+def find_item:
+if $literal != "false" then 
+    .overview.title == $pattern
+  else
+    .overview.title | test(".*\($pattern).*"; "i")
+  end;
+map(
+    select(find_item) |
+    "\(.uuid) \(.overview.title)"
+) |
+if (length == 0) then
+    error("No matches found for /\($pattern)/i")
+else 
+    .[]
+end'
+
+function fail() {
+    echo "$@" >/dev/stderr
+    exit 2
+}
+
+case "$1" in
+    password|otp)
+        set -o pipefail
+
+        uuid="$(/usr/local/bin/op list items | jq --raw-output --arg literal "${3:-false}" --arg pattern "${2// /.*}" "$search_filter")" || fail "could not search for secret uuid "
+        
+        matches="$(( $(wc -l <<<"$uuid") + 0 ))"
+        if [[ "$matches" -eq 0 ]] ; then
+            fail "Found no matches :/"
+        elif [[ "$matches" -gt 1 ]] ; then
+            fail "Found multiple options ($matches) for secret: 
+$(awk '{$1 = "-"; print $0}' <<<"$uuid")"
+        fi
+
+        if [[ $1 == "password" ]]; then
+          exec /usr/local/bin/op get item "${uuid%% *}" --fields ${4:-password}
+        else
+          exec /usr/local/bin/op get totp "${uuid%% *}" 
+        fi
+        ;;
+
+    *)
+        exec /usr/local/bin/op $@
+esac

@@ -1,2 +1,4 @@
 ruby 2.6.5
-nodejs 8.11.3
+nodejs 14.15.4
+golang 1.15.2
+python 3.7.2

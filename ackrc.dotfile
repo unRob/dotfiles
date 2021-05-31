@@ -3,5 +3,11 @@
 --ignore-dir=vendor/
 --ignore-dir=venv/
 --ignore-dir=.terraform/
+--ignore-dir=.scannerwork/
 
 --ignore-file=match:/\.tfstate\.?.*/
+
+--ignore-file=ext:avro
+--ignore-file=ext:svg
+--ignore-file=is:yarn.lock
+--ignore-file=match:/\.avro\.part.*/
