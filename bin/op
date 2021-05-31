@@ -14,7 +14,7 @@ map(
 if (length == 0) then
     error("No matches found for /\($pattern)/i")
 else 
-    .[]
+    sort | .[]
 end'
 
 function fail() {
@@ -31,9 +31,29 @@ case "$1" in
         matches="$(( $(wc -l <<<"$uuid") + 0 ))"
         if [[ "$matches" -eq 0 ]] ; then
             fail "Found no matches :/"
-        elif [[ "$matches" -gt 1 ]] ; then
-            fail "Found multiple options ($matches) for secret: 
+        elif [[ "$matches" -gt 1 ]]; then
+          if [[ -t 1 ]]; then
+            PS3="Select an option (1-$(( $matches + 1 ))): "
+            oldifs="$IFS"
+            IFS=$'\n'
+            names="$(cut -d " " -f 2- <<< "$uuid")"
+            options=($names)
+            IFS="$oldifs"
+            select opt in "${options[@]}" "Quit"; do
+              if [[ "$opt" == "Quit" ]] || [[ $REPLY == "$(( ${#options[@]} + 1 ))" ]]; then
+                fail "Exiting"
+              fi
+
+              uuid=$(sed -n "${REPLY}p" <<<"$uuid")
+              if [[ "$uuid" != "" ]]; then
+                break
+              fi
+              >&2 echo "No such option"
+            done
+          else
+            fail "Found multiple options ($matches) for secret:
 $(awk '{$1 = "-"; print $0}' <<<"$uuid")"
+          fi
         fi
 
         if [[ $1 == "password" ]]; then
