@@ -20,7 +20,7 @@ export ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
 # Plugins
 # ----------------
 # load out-of-the-box plugins
-plugins=(git osx zsh_reload)
+plugins=(git osx iterm2)
 # load custom plugins
 plugins+=("${(@f)$(find -L "$DOTFILES/zsh-stuff/plugins" -type d -maxdepth 1 -mindepth 1 -exec basename "{}" \;)}")
 # zmv is mv for champions

@@ -11,6 +11,7 @@ else
 
   name=$(@ask "How do folks call you?" "$MILPA_OPT_NAME")
   email=$(@ask "What email address should we use?" "$MILPA_OPT_EMAIL")
+  op_name=$(@ask "What's the name of our 1password vault?" "$MILPA_OPT_EMAIL")
 
   @milpa.log info "Creating profile at $profile_path"
 cat >"$profile_path" <<-EOF
@@ -21,6 +22,9 @@ COMPUTAR_USER_EMAIL="$email"
 COMPUTAR_USER_NAME="$name"
 # What is this computar used primarily for?
 COMPUTAR_PROFILE="${MILPA_OPT_PROFILE}"
+# Set our 1password vault name
+OP_VAULT_NAME="$op_name"
+OP_SESSION_NAME="OP_SESSION_$op_name"
 EOF
   @milpa.log success "Created profile"
 fi
