@@ -1,0 +1,10 @@
+summary: Provisions ssh config
+description: |
+  Either downoads or creates an ssh key. If creating a new key, it'll be added to github.
+options:
+  backup-source:
+    description: a URL to fetch backups from
+    default: https://rob.mx/ssh-backup.tgz.enc
+  overwrite:
+    description: provision from scratch
+    type: bool

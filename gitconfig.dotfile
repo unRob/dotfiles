@@ -1,5 +1,5 @@
 [include]
-  path = "~/.config/git/identity"
+  path = "~/.config/computar/git-identity"
 [alias]
   st = status
   ci = commit

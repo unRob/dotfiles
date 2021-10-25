@@ -7,9 +7,6 @@ export ZSH=$DOTFILES/oh-my-zsh
 # Uncomment the following line to change how often to auto-update (in days).
 export UPDATE_ZSH_DAYS=1
 # Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
 export ZSH_THEME="unrob"
 # Uncomment the following line to disable auto-setting terminal title.
 export DISABLE_AUTO_TITLE="true"
@@ -17,9 +14,6 @@ export DISABLE_AUTO_TITLE="true"
 export COMPLETION_WAITING_DOTS="true"
 # What to higlight in the shell prompt
 export ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
-# Let asdf plugin know we're actually 100% sure there's zsh autocomplete available
-# https://github.com/ohmyzsh/ohmyzsh/pull/8837
-export ZSH_ASDF_YES_REALLY_ZSH="true"
 
 
 # ----------------
@@ -47,19 +41,8 @@ source "$ZSH/oh-my-zsh.sh"
 # ----------------
 alias g='git'
 
-# ----------------
-# Paths
-# ----------------
-# Set the searth path for binaries, homebrew's first
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
-# append our binaries
-export PATH="$PATH:$DOTFILES/bin"
-# then golang's
-export PATH="$PATH:${GOPATH//://bin:}/bin"
-# then node's
-export PATH="${HOME}/.yarn/bin:$PATH"
-# Please the golang pantheon
-export GOPATH="${HOME}/src/go"
+
+
 # Enable us to cd to anywhere in the current path, $HOME or $HOME/src
 CDPATH=".:~:~/src"
 
@@ -79,16 +62,10 @@ export LC_NUMERIC="en_US.UTF-8"
 export LC_TIME="en_US.UTF-8"
 export LC_ALL="en_US.UTF-8"
 
-# sourcing asdf.sh from a plugin is not working for me, it does source but not
-# in the resulting shell :/
-source ~/.asdf/asdf.sh
-
 # ----------------
 # Nasty stuff added by computars beyond
 # ----------------
 for f in $(find "${HOME}/.dotfiles/local-init" -type f -name '*.zsh'); do
   # let computars break the system and slow down shell boot
-  . ${f}
+  . "${f}"
 done
-
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh" || true

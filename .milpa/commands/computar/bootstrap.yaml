@@ -1,0 +1,13 @@
+summary: bootstraps and provisions a computar so it's roberto-proof
+description: |
+  This command makes sure a computar is ready for roberto to make explosions. Computars can be used for either fun or profit
+
+  - creates identity files for git
+  - downloads or creates an ssh key
+  - downloads or updates ~/.dotfiles
+  - installs a bunch of dependencies
+arguments:
+  - name: profile
+    values: [fun, profit]
+    description: What this computar is gonna be used for
+    required: true

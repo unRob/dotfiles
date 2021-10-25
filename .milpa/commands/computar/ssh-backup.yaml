@@ -1,0 +1,7 @@
+summary: Creates an encrypted backup of ssh stuff
+description: |
+  Takes all files in `$HOME/.ssh/config.d` and all of my ssh keys, and encrypts a tar archive of them with aes-256-cbc. It then `scp`s this file into `TARGET`.
+arguments:
+  - name: target
+    description: the scp target ship the backup to, excluding filename
+    required: true

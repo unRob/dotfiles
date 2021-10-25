@@ -1,0 +1,12 @@
+summary: clones a repo to ~/src
+description: |
+  Clones a repo from github. Set MILPA_CLONE_ORG and it'll clone repos from that org if no org is provided.
+arguments:
+  - name: repo
+    description: the name of the repository to clone
+options:
+  target:
+    description: a path to clone this repo to
+  ignore-existing:
+    description: if set, will ignore existing repos and exit cleanly
+    type: bool

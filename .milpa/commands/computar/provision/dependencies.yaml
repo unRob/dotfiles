@@ -1,0 +1,3 @@
+summary: Keeps global dependencies up to date
+description: |
+  Installs homebrew and a bunch of stuff, appropriate for the current `COMPUTAR_PROFILE` (see `milpa computar provision identity`).

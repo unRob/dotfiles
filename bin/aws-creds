@@ -1,8 +1,0 @@
-#!/usr/bin/env zsh
-# usage: AWS_ENV=prod aws-creds [aws s3 ls...]
-
-label="aws.${AWS_ENV:-$DEFAULT_AWS_ENV}.aws_access_key"
-
-export AWS_ACCESS_KEY_ID=$(security find-generic-password -l "$label" | grep acct | awk -F'"' '$0=$4');
-export AWS_SECRET_ACCESS_KEY=$(security find-generic-password -l "$label" -w);
-exec "$@";

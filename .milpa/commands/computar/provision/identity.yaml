@@ -1,0 +1,15 @@
+summary: Creates identity profiles
+description: |
+  Writes my name and email to a couple of places in `~/.config/computar`, one for the shell, and another for git
+options:
+  profile:
+    description: the profile to create this computar for
+    values: [fun, profit]
+  name:
+    description: The name you'd like to show up on commits and stuff, prompted if not supplied
+    default: Roberto Hidalgo
+  email:
+    description: The email you'd like to show up on commits and stuff, prompted if not supplied
+  force:
+    description: if supplied, will overwrite existing files
+    type: bool
