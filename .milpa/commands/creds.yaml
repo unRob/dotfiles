@@ -12,5 +12,8 @@ options:
     description: if provided, the lookup will be literal.
     type: bool
   field:
-    description: the 1password item field to return
+    description: the 1password item's field to return
     default: password
+  search:
+    description: the 1password item's field to query against `NEEDLE`
+    default: title

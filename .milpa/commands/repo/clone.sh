@@ -2,6 +2,7 @@
 
 repo="${MILPA_ARG_REPO}"
 if [[ ! "$repo" =~ "/" ]]; then
+  [[ "$MILPA_CLONE_ORG" ]] || @milpa.fail "No MILPA_CLONE_ORG environment variable set, and no full repo path provided"
   repo="${MILPA_CLONE_ORG}/$repo"
 fi
 repo_name="${repo##*/}"
@@ -26,7 +27,7 @@ if [[ -d "$target" ]]; then
 fi
 
 @milpa.log info "Cloning $(@milpa.fmt bold "$repo") into $(@milpa.fmt bold "$target")"
-git clone "git@github.com:/$repo_name.git" "$target" || @milpa.fail "Could not clone into $target"
+git clone "git@github.com:/$repo.git" "$target" || @milpa.fail "Could not clone into $target"
 @milpa.log success "Cloned $repo_name into $target"
 
 if [[ -s "$target/.gitmodules" ]]; then

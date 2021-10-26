@@ -1,9 +1,9 @@
 summary: clones a repo to ~/src
 description: |
-  Clones a repo from github. Set MILPA_CLONE_ORG and it'll clone repos from that org if no org is provided.
+  Clones a `REPO` from github. A default github organization may be set with `MILPA_CLONE_ORG`, and it'll be prefixed to any `REPO`s that don't include one.
 arguments:
   - name: repo
-    description: the name of the repository to clone
+    description: the name of the repository to clone, i.e. `unRob/milpa`
 options:
   target:
     description: a path to clone this repo to
