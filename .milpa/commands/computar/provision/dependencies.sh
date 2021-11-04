@@ -11,7 +11,7 @@ case "$(uname -s)" in
       xcode-select --install
     fi
 
-    @ask "Once CLT are installed, enter anything to continue:"
+    @milpa.ask "Once CLT are installed, enter anything to continue:"
   ;;
   Linux) os="linux" ;;
 esac

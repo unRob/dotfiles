@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-@milpa.load_util input sed
+@milpa.load_util user-input sed
 set -o nounset
 
 ssh_config="$HOME/.ssh/config"
@@ -34,7 +34,7 @@ else
   @milpa.log success "SSH key generated"
 
   @milpa.log info "Uploading key to github"
-  gh_pat=$(@ask "Enter a token from https://github.com/settings/tokens/new :")
+  gh_pat=$(@milpa.ask "Enter a token from https://github.com/settings/tokens/new :")
 
   if curl --silent -u "unrob:$gh_pat" \
     --fail --show-error \

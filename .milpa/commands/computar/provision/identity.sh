@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-@milpa.load_util "input"
+@milpa.load_util user-input
 
 profile_path="${HOME}/.config/computar/profile"
 git_profile_path="${HOME}/.config/computar/git-identity"
@@ -9,9 +9,9 @@ if [[ -f "$profile_path" ]] && [[ ! "$MILPA_OPT_FORCE" ]]; then
 else
   mkdir -pv "$(dirname "$profile_path")"
 
-  name=$(@ask "How do folks call you?" "$MILPA_OPT_NAME")
-  email=$(@ask "What email address should we use?" "$MILPA_OPT_EMAIL")
-  op_name=$(@ask "What's the name of our 1password vault?" "$MILPA_OPT_EMAIL")
+  name=$(@milpa.ask "How do folks call you?" "$MILPA_OPT_NAME")
+  email=$(@milpa.ask "What email address should we use?" "$MILPA_OPT_EMAIL")
+  op_name=$(@milpa.ask "What's the name of our 1password vault?" "$MILPA_OPT_EMAIL")
 
   @milpa.log info "Creating profile at $profile_path"
 cat >"$profile_path" <<-EOF

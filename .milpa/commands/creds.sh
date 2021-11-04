@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-@milpa.load_util input
+@milpa.load_util user-input
 
 set -o pipefail
 
@@ -42,7 +42,7 @@ elif [[ "$matches" -gt 1 ]]; then
   [[ ! -t 1 ]] && @milpa.fail "Found multiple options ($matches) for secret:
 $(awk '{$1 = "-"; print $0}' <<<"$uuid")"
 
-  name="$(@select "$(cut -d " " -f 2- <<< "$uuid")")" || @milpa.fail "Failed selecting item"
+  name="$(@milpa.select "$(cut -d " " -f 2- <<< "$uuid")")" || @milpa.fail "Failed selecting item"
   uuid=$(sed -n "/${name//\./\.}$/p" <<<"$uuid")
 fi
 

@@ -8,6 +8,6 @@ description: |
   - installs a bunch of dependencies
 arguments:
   - name: profile
-    values: [fun, profit]
+    values: { static: [fun, profit] }
     description: What this computar is gonna be used for
     required: true
