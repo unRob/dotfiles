@@ -14,6 +14,9 @@ options:
   field:
     description: the 1password item's field to return
     default: password
+    values:
+      static: [password, otp, website]
+      suggest-only: true
   search:
     description: the 1password item's field to query against `NEEDLE`
     default: title

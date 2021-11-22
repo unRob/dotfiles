@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 @milpa.load_util user-input sed
-set -o nounset
+
+if [[ "$COMPUTAR_PROFILE" != "fun" ]] && [[ "$COMPUTAR_PROFILE" != "profit" ]]; then
+  @milpa.fail "Unknown computar profile"
+fi
 
 ssh_config="$HOME/.ssh/config"
 hosts_config="$HOME/.ssh/config.d"

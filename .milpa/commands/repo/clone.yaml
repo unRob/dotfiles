@@ -7,6 +7,7 @@ arguments:
 options:
   target:
     description: a path to clone this repo to
+    values: { dirs: "" }
   ignore-existing:
     description: if set, will ignore existing repos and exit cleanly
     type: bool

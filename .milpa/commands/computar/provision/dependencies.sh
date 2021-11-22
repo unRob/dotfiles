@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+@milpa.load_util user-input
+
 base="$DOTFILES_PATH/brewfiles/"
 brewfile="$HOME/.Brewfile"
 
@@ -11,7 +13,7 @@ case "$(uname -s)" in
       xcode-select --install
     fi
 
-    @milpa.ask "Once CLT are installed, enter anything to continue:"
+    @milpa.confirm "Make sure CLT are installed, then"
   ;;
   Linux) os="linux" ;;
 esac
@@ -35,31 +37,59 @@ else
   @milpa.log success "Brew dependencies up to date"
 fi
 
-function _iterm_prefs_folder() {
-  defaults read com.googlecode.iterm2 PrefsCustomFolder
-}
+@milpa.log info "Installing vscode extensions"
+grep -v '^#' "${DOTFILES_PATH}/vscode.extensions" | while read -r extension; do
+  if code --list-extensions | grep -m1 "^${extension}\$" >/dev/null; then
+    @milpa.log success "extension $extension already installed"
+  fi
+
+  code --install-extension "$extension" || @milpa.fail "Could not install vscode extension $extension"
+    @milpa.log success "Installed extension $extension"
+done
 
 if [[ "$os" == "macos" ]]; then
-  if [[ "$(_iterm_prefs_folder)" != "$DOTFILES_PATH" ]]; then
+  if [[ "$(defaults read com.googlecode.iterm2 PrefsCustomFolder)" != "$DOTFILES_PATH" ]]; then
     @milpa.log "Configuring iTerm"
     defaults write com.googlecode.iterm2 PrefsCustomFolder "$DOTFILES_PATH"
     killall cfprefsd
+    @milpa.log success "iterm preference folder configured"
   fi
 fi
 
-if [[ -d "${HOME}/.asdf" ]]; then
-   if [[ ! -d "${HOME}/.asdf" ]]; then
-    @milpa.log info "Installing asdf version manager..."
-    git clone https://github.com/asdf-vm/asdf.git "${HOME}/.asdf" --branch v0.8.0
-  fi
+if [[ ! -d "${HOME}/.asdf" ]]; then
+  @milpa.log info "Installing asdf version manager..."
+  git clone https://github.com/asdf-vm/asdf.git "${HOME}/.asdf" --branch v0.8.0 || @milpa.fail "Could not clone asdf-vm"
+  @milpa.log success "Installed asdf-vm"
 
-  log "installing tools from .tool-versions..."
-  cut -d ' ' -f 1 "${HOME}/.tool-versions" | while read -r plugin; do
-    asdf plugin-add "$plugin";
-  done
-  # shellcheck disable=2164
-  cd "$HOME";
-  asdf install
+  # shellcheck disable=1091
+  source "$HOME/.asdf/asdf.sh"
 else
   @milpa.log success "asdf installed"
 fi
+
+@milpa.log info "installing tools from .tool-versions..."
+cut -d ' ' -f 1 "${HOME}/.tool-versions" | while read -r plugin; do
+  if asdf plugin list | grep -m1 "$plugin" >/dev/null; then
+    @milpa.log success "asdf plugin for $plugin already installed"
+    continue
+  fi
+
+  @milpa.log info "Installing $plugin asdf plugin..."
+  asdf plugin-add "$plugin" || @milpa.fail "Could not install asdf plugin $plugin"
+done
+
+# shellcheck disable=2164
+cd "$HOME";
+
+cut -d ' ' -f 1 "${HOME}/.tool-versions" | while read -r plugin version; do
+  if asdf list "$plugin" | grep -m1 "^\s*${version}\$" >/dev/null; then
+    @milpa.log success "asdf: $plugin version $version is already installed"
+    continue
+  fi
+  
+  @milpa.log info "Installing $plugin version $version..."
+  asdf install "$plugin" "$version" || @milpa.fail "Could not install $plugin version $version"
+  @milpa.log success "$plugin version $version installed"
+done
+
+@milpa.log complete "Computar has dependencies provisioned! "
