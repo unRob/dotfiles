@@ -56,8 +56,6 @@ cask "font-fira-code"
 cask "slack"
 cask "spotify"
 
-cask "spotify-notifications"
-
 cask "1password-cli"
 cask "the-unarchiver"
 
