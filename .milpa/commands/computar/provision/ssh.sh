@@ -23,13 +23,16 @@ mkdir -p "$hosts_config"
 if [[ "$COMPUTAR_PROFILE" == "fun" ]]; then
   @milpa.log info "Downloading ssh config from $MILPA_OPT_BACKUP_SOURCE"
   set -o pipefail
+  dst="/tmp/ssh-bootstrap"
+  rm -rf "$dst"
+  mkdir -p "$dst"
   curl --silent --fail --show-error -L "$MILPA_OPT_BACKUP_SOURCE" |
     openssl enc -d -aes256 |
-    tar -xz -C "/tmp/ssh" || @milpa.fail "Could not download ssh backup"
+    tar -xz -C "$dst" || @milpa.fail "Could not download ssh backup"
   set +o pipefail
 
-  cp -rv /tmp/ssh/* "$HOME/.ssh/"
-  rm -rf /tmp/ssh
+  cp -rv "$dst"/* "$HOME/.ssh/"
+  rm -rf "$dst"
   @milpa.log success "SSH config fetched"
 else
   mkdir -p "$HOME/.ssh"
