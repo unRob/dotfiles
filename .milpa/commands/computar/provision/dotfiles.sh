@@ -13,7 +13,7 @@ else
   ln -sfv "$repo/.milpa" "${XDG_DATA_HOME:-$HOME/.local/share}/milpa/repos/dotfiles"
 fi
 
-ln -sfv "$repo" "$HOME/.dotfiles"
+[[ ! -d "$HOME/.dotfiles" ]] && ln -sfv "$repo" "$HOME/.dotfiles"
 
 [[ -d "$repo/oh-my-zsh" ]] || milpa repo clone robbyrussell/oh-my-zsh --target "$repo/oh-my-zsh" --ignore-existing || @milpa.fail "Could not clone oh-my-zsh"
 
