@@ -6,9 +6,9 @@ if [[ -d "$repo" ]]; then
   cd "$repo"
   git pull || @milpa.fail "Could not pull changes from dotfiles"
 else
-  repo clone unRob/dotfiles || @milpa.fail "Could not clone dotfiles"
+  milpa repo clone unRob/dotfiles || @milpa.fail "Could not clone dotfiles"
   # uninstall the dotfile repo and install link it from the freshly cloned source
-  dotfile_repo="${XDG_DATA_HOME:-$HOME/.local/share}/milpa/dotfiles"
+  dotfile_repo="${MILPA_COMMAND_REPO}"
   milpa itself repo uninstall "$dotfile_repo"
   ln -sfv "$repo/.milpa" "${XDG_DATA_HOME:-$HOME/.local/share}/milpa/dotfiles"
 fi

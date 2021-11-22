@@ -21,6 +21,4 @@ for step in "${steps[@]}"; do
   milpa computar provision "$step" || @milpa.fail "Failed during \`milpa computar provision $step\`"
 done
 
-# we temporarily unlink actual zshrc to do iterm fuckery
-rm "$HOME/.zshrc"
-
+@milpa.log success "Computar bootstrap done"
