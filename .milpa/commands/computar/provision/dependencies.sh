@@ -11,9 +11,8 @@ case "$(uname -s)" in
     if ! xcode-select --version >/dev/null; then
       @milpa.log "Installing Command Line Tools (CLT) for Xcode, click on the thing!"
       xcode-select --install
+      @milpa.confirm "Make sure CLT are installed, then"
     fi
-
-    @milpa.confirm "Make sure CLT are installed, then"
   ;;
   Linux) os="linux" ;;
 esac
@@ -38,14 +37,15 @@ else
 fi
 
 @milpa.log info "Installing vscode extensions"
-grep -v '^#' "${DOTFILES_PATH}/vscode.extensions" | while read -r extension; do
-  if code --list-extensions | grep -m1 "^${extension}\$" >/dev/null; then
+while read -r extension; do
+  if code --list-extensions 2>/dev/null | grep -m1 "^${extension}\$" >/dev/null; then
     @milpa.log success "extension $extension already installed"
+    continue
   fi
 
   code --install-extension "$extension" || @milpa.fail "Could not install vscode extension $extension"
     @milpa.log success "Installed extension $extension"
-done
+done < <(grep -v '^#' "${DOTFILES_PATH}/vscode.extensions")
 
 if [[ "$os" == "macos" ]]; then
   if [[ "$(defaults read com.googlecode.iterm2 PrefsCustomFolder)" != "$DOTFILES_PATH" ]]; then
@@ -68,7 +68,7 @@ else
 fi
 
 @milpa.log info "installing tools from .tool-versions..."
-cut -d ' ' -f 1 "${HOME}/.tool-versions" | while read -r plugin; do
+while read -r plugin; do
   if asdf plugin list | grep -m1 "$plugin" >/dev/null; then
     @milpa.log success "asdf plugin for $plugin already installed"
     continue
@@ -76,12 +76,12 @@ cut -d ' ' -f 1 "${HOME}/.tool-versions" | while read -r plugin; do
 
   @milpa.log info "Installing $plugin asdf plugin..."
   asdf plugin-add "$plugin" || @milpa.fail "Could not install asdf plugin $plugin"
-done
+done < <(cut -d ' ' -f 1 "${HOME}/.tool-versions")
 
 # shellcheck disable=2164
 cd "$HOME";
 
-cut -d ' ' -f 1 "${HOME}/.tool-versions" | while read -r plugin version; do
+while read -r plugin version; do
   if asdf list "$plugin" | grep -m1 "^\s*${version}\$" >/dev/null; then
     @milpa.log success "asdf: $plugin version $version is already installed"
     continue
@@ -90,6 +90,6 @@ cut -d ' ' -f 1 "${HOME}/.tool-versions" | while read -r plugin version; do
   @milpa.log info "Installing $plugin version $version..."
   asdf install "$plugin" "$version" || @milpa.fail "Could not install $plugin version $version"
   @milpa.log success "$plugin version $version installed"
-done
+done <"${HOME}/.tool-versions"
 
-@milpa.log complete "Computar has dependencies provisioned! "
+@milpa.log complete "Computar has dependencies provisioned!"

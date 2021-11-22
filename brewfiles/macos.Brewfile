@@ -34,13 +34,13 @@ brew "pinentry"
 brew "readline"
 brew "shellcheck"
 brew "telnet"
-brew "rar"
 brew "watch"
 # latest zsh
 brew "zsh"
 brew "glow"
 
 cask "iterm2"
+cask "rar"
 cask "visual-studio-code"
 
 # quicklook source highlighter
