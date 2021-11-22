@@ -16,7 +16,6 @@ cask "steam"
 mas "1Password 7", id: 1333542190
 mas "AdBlock", id: 1402042596
 mas "Sofortbild", id: 411729406
-mas "Airmail 2", id: 918858936
 mas "Tweetbot", id: 1384080005
 
 # apple stuff

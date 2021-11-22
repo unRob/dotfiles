@@ -34,7 +34,7 @@ brew "pinentry"
 brew "readline"
 brew "shellcheck"
 brew "telnet"
-brew "unrar"
+brew "rar"
 brew "watch"
 # latest zsh
 brew "zsh"
@@ -43,10 +43,9 @@ brew "glow"
 cask "iterm2"
 cask "visual-studio-code"
 
-# quicklook zip
-cask "betterzipql"
 # quicklook source highlighter
 cask "qlcolorcode"
+# qlmarkdown requires me to open the app and save settings
 cask "qlmarkdown"
 # quicklook text/plain
 cask "qlstephen"
@@ -56,6 +55,7 @@ cask "font-fira-code"
 
 cask "slack"
 cask "spotify"
+
 cask "spotify-notifications"
 
 cask "1password-cli"
