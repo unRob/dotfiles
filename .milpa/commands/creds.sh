@@ -7,13 +7,13 @@ set -o pipefail
 search_filter='
 def find_item:
 if $literal != "false" then 
-    .overview[$query_field] == $pattern
+    .[$query_field] == $pattern
   else
-    (.overview[$query_field] // "") | test(".*\($pattern).*"; "i")
+    (.[$query_field] // "") | test(".*\($pattern).*"; "i")
   end;
 map(
   select(find_item) |
-  "\(.uuid) \(.overview.title)"
+  "\(.id) \(.title)"
 ) |
 if (length == 0) then
   error("No matches found for /\($pattern)/i in field \($query_field)")
@@ -21,10 +21,10 @@ else
   sort | .[]
 end'
 
-eval "$(op signin "$OP_VAULT_NAME" --session "${!OP_SESSION_NAME}")"
+eval "$(op signin --account "${OP_VAULT_NAME}.1password.com" --session "${!OP_SESSION_NAME}")"
 
 function lookup () {
-  op list items | 
+  op item list --format json | 
     jq --raw-output \
       --arg literal "${MILPA_OPT_LITERAL:-false}" \
       --arg pattern "${MILPA_ARG_NEEDLE// /.*}" \
@@ -47,6 +47,6 @@ $(awk '{$1 = "-"; print $0}' <<<"$uuid")"
 fi
 
 case "$MILPA_OPT_FIELD" in 
-  "otp") exec op get totp "${uuid%% *}" ;;
-  *) exec op get item "${uuid%% *}" --fields "${MILPA_OPT_FIELD}" ;;
+  "otp") exec op item get --field type=otp --format json "${uuid%% *}" | jq -r .totp ;;
+  *) exec op item get "${uuid%% *}" --field "label=${MILPA_OPT_FIELD}" ;;
 esac
