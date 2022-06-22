@@ -1,0 +1,23 @@
+summary: Creates a new branch
+description: |
+  Longer description of how it does the thing
+arguments:
+  - name: branch
+    description: the name of the branch
+    required: true
+    variadic: true
+options:
+  ticket:
+    default: no-tix
+    description: the ticket to use for the branch
+    values:
+      suggest-only: true
+      static: [PROD-, no-tix]
+  delete:
+    short-name: d
+    description: Deletes the current branch
+    type: bool
+  prefix:
+    description: the branch prefix to add
+    type: string
+    default: roberto
