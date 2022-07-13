@@ -11,3 +11,4 @@
 --ignore-file=ext:svg
 --ignore-file=is:yarn.lock
 --ignore-file=match:/\.avro\.part.*/
+--ignore-dir=.pytype/
