@@ -1,0 +1,3 @@
+--glob=*
+--glob=.milpa/*
+--glob=!.git/*

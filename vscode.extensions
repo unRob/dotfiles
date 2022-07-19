@@ -3,11 +3,12 @@ bungcip.better-toml
 casualjim.gotemplate
 EditorConfig.EditorConfig
 golang.go
+hashicorp.hcl
 hashicorp.terraform
 idleberg.applescript
 jetmartin.bats
 jq-syntax-highlighting.jq-syntax-highlighting
-mikestead.dotenv
+mads-hartmann.bash-ide-vscode
 monokai.theme-monokai-pro-vscode
 ms-azuretools.vscode-docker
 ms-python.python
@@ -16,4 +17,5 @@ rebornix.ruby
 samuelcolvin.jinjahtml
 shanoor.vscode-nginx
 timonwong.shellcheck
-wholroyd.HCL
+wingrunr21.vscode-ruby
+yzhang.markdown-all-in-one

@@ -9,12 +9,13 @@ tap "homebrew/cask-fonts"
 
 # https://beyondgrep.com
 brew "ack"
+# cause it's faster than ack
+brew "ripgrep"
 # https://github.com/AlDanial/cloc
 brew "cloc"
 brew "coreutils"
 brew "curl"
-# https://github.com/so-fancy/diff-so-fancy
-brew "diff-so-fancy"
+brew "git-delta"
 # digital-ocean
 brew "exiftool"
 brew "ffmpeg"
@@ -37,7 +38,9 @@ brew "telnet"
 brew "watch"
 # latest zsh
 brew "zsh"
+# fancy markdown
 brew "glow"
+brew "sqlite"
 
 cask "iterm2"
 cask "rar"
@@ -56,7 +59,8 @@ cask "font-fira-code"
 cask "slack"
 cask "spotify"
 
-cask "1password-cli"
+cask "1password"
+cask "1password/tap/1password-cli"
 cask "the-unarchiver"
 
 # window management

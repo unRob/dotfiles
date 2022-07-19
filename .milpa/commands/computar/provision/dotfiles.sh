@@ -4,7 +4,7 @@ repo="${HOME}/src/dotfiles"
 if [[ -d "$repo" ]]; then
   # shellcheck disable=2164
   cd "$repo"
-  git pull || @milpa.fail "Could not pull changes from dotfiles"
+  git pull || @milpa.log warning "Could not pull changes from dotfiles"
 else
   milpa repo clone unRob/dotfiles || @milpa.fail "Could not clone dotfiles"
   # uninstall the dotfile repo and install link it from the freshly cloned source
@@ -17,6 +17,7 @@ fi
 
 [[ -d "$repo/oh-my-zsh" ]] || milpa repo clone robbyrussell/oh-my-zsh --target "$repo/oh-my-zsh" --ignore-existing || @milpa.fail "Could not clone oh-my-zsh"
 
+@milpa.log info "aliasing dotfiles"
 for dotfile in "$repo/"*.dotfile; do
   ln -sfv "$dotfile" "$HOME/.$(basename "${dotfile%%.dotfile}")"
 done
