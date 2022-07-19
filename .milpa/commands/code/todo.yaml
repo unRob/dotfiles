@@ -1,0 +1,3 @@
+summary: Looks for todos in the current folder
+description: |
+  uses ack

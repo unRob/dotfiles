@@ -1,0 +1,5 @@
+summary: Formatter for git logs
+description: |
+  Prints the git log the way i like it.
+  
+  Inspired by https://github.com/garybernhardt/dotfiles/blob/master/.githelpers

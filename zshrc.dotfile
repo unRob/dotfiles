@@ -40,11 +40,10 @@ source "$ZSH/oh-my-zsh.sh"
 # Aliases
 # ----------------
 alias g='git'
-
-
+alias m='milpa'
 
 # Enable us to cd to anywhere in the current path, $HOME or $HOME/src
-CDPATH=".:~:~/src"
+cdpath=("$HOME" "$HOME/src")
 
 # ----------------
 # Further config
@@ -65,7 +64,7 @@ export LC_ALL="en_US.UTF-8"
 # ----------------
 # Nasty stuff added by computars beyond
 # ----------------
-for f in $(find "${HOME}/.dotfiles/local-init" -type f -name '*.zsh'); do
+for localInit in $(find "${HOME}/.dotfiles/local-init" -type f -name '*.zsh'); do
   # let computars break the system and slow down shell boot
-  . "${f}"
+  source "${localInit}"
 done
