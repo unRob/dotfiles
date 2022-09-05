@@ -1,0 +1,10 @@
+summary: counts the number of files
+description:
+  basically that, just counts files
+arguments:
+  - name: dir
+    description: the directory to count files from
+    default: .
+options:
+  filter:
+    description: an optional pattern to filter file names on

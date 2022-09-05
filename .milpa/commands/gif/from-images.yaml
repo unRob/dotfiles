@@ -1,0 +1,22 @@
+summary: creates a gif from a sequence of images
+description: |
+  Uses ffmpeg to resize and stitch together an animated gif, then gifsicle to optimize and compress
+arguments:
+  - name: files
+    description: the images to stitch together
+    required: true
+    variadic: true
+    values:
+      files: ["*"]
+options:
+  output:
+    description: the path for the created gif
+    default: output.gif
+  size:
+    description: the longest side will be at most this size in pixels
+  delay:
+    description: the delay between frame changes in seconds
+    default: ".2"
+  compression:
+    description: amount of compression to apply from 0 to 1 
+    default: "0.5"
