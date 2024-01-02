@@ -63,6 +63,10 @@ export LC_ALL="en_US.UTF-8"
 
 export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
 
+# prevent homebrew from taking over my shell for hours
+# with updates i did not request
+export HOMEBREW_NO_AUTO_UPDATE=1
+
 # ----------------
 # Nasty stuff added by computars beyond
 # ----------------

@@ -1,4 +1,4 @@
-golang 1.18.2
+golang 1.21
 nodejs lts
-python 3.7.12
-ruby 2.7.3
+python 3.11.2
+ruby 3.2.2

@@ -1,0 +1,14 @@
+summary: Displays a notification on macOS
+description: |
+  and optionally plays a sound
+arguments:
+  - name: message
+    description: The body of the message to display
+    required: true
+options:
+  title:
+    description: A title to show in the notification
+  sound:
+    description: an optional sound to play
+    values:
+      script: find /System/Library/Sounds -type f | awk -F/ '{gsub(/\..+@/, ""); print $NF}'

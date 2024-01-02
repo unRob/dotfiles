@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-@milpa.load_util user-input sed
+@milpa.load_util user-input
 
 if [[ "$COMPUTAR_PROFILE" != "fun" ]] && [[ "$COMPUTAR_PROFILE" != "profit" ]]; then
   @milpa.fail "Unknown computar profile"

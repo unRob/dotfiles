@@ -1,6 +1,7 @@
 ban.spellright
-bungcip.better-toml
+bbenoist.Nix
 casualjim.gotemplate
+coolbear.systemd-unit-file
 EditorConfig.EditorConfig
 golang.go
 hashicorp.hcl
@@ -11,11 +12,16 @@ jq-syntax-highlighting.jq-syntax-highlighting
 mads-hartmann.bash-ide-vscode
 monokai.theme-monokai-pro-vscode
 ms-azuretools.vscode-docker
+ms-python.isort
 ms-python.python
 ms-python.vscode-pylance
-rebornix.ruby
+rust-lang.rust-analyzer
 samuelcolvin.jinjahtml
 shanoor.vscode-nginx
+Shopify.ruby-extensions-pack
+Shopify.ruby-lsp
+sorbet.sorbet-vscode-extension
+tamasfe.even-better-toml
 timonwong.shellcheck
-wingrunr21.vscode-ruby
+vadimcn.vscode-lldb
 yzhang.markdown-all-in-one

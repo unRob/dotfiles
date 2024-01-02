@@ -7,16 +7,11 @@ tap "homebrew/services"
 # oss fonts
 tap "homebrew/cask-fonts"
 
-# https://beyondgrep.com
-brew "ack"
-# cause it's faster than ack
-brew "ripgrep"
 # https://github.com/AlDanial/cloc
 brew "cloc"
 brew "coreutils"
 brew "curl"
 brew "git-delta"
-# digital-ocean
 brew "exiftool"
 brew "ffmpeg"
 brew "fswatch"
@@ -33,11 +28,15 @@ brew "jq"
 # mac app store
 brew "pinentry"
 brew "readline"
+# cause it's faster than ack
+brew "ripgrep"
 brew "shellcheck"
 brew "telnet"
 brew "watch"
 # latest zsh
 brew "zsh"
+# nicer cat
+brew "bat"
 # fancy markdown
 brew "glow"
 brew "sqlite"
@@ -57,7 +56,7 @@ cask "quicklook-json"
 cask "font-fira-code"
 
 cask "slack"
-cask "spotify"
+cask "plexamp"
 
 cask "1password"
 cask "1password/tap/1password-cli"

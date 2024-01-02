@@ -1,12 +1,8 @@
-brew "doctl"
-brew "geoip"
 brew "mitmproxy"
 brew "mas"
 
 # backups
 cask "backblaze"
-# sharing
-cask "dropbox"
 # browsers
 cask "firefox"
 cask "google-chrome"
@@ -14,8 +10,6 @@ cask "google-chrome"
 cask "steam"
 
 mas "AdBlock", id: 1402042596
-mas "Sofortbild", id: 411729406
-mas "Tweetbot", id: 1384080005
 
 # apple stuff
 mas "GarageBand", id: 682658836

@@ -1,0 +1,10 @@
+summary: finds github repository names
+description: |
+  Optionally uses credentials if present on the environment or `--authenticated`
+arguments:
+  - name: query
+    description: a query to search by
+options:
+  authenticated:
+    description: use 1password credentials for github.com
+    type: bool

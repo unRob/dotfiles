@@ -1,3 +1,3 @@
 summary: Looks for todos in the current folder
 description: |
-  uses ack
+  searches for `TODO` or `TODO-$USER` followed by a space or semicolon and prints out the filenames, notes and relative timestamp of found lines.

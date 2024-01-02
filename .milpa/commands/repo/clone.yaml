@@ -4,6 +4,9 @@ description: |
 arguments:
   - name: repo
     description: the name of the repository to clone, i.e. `unRob/milpa`
+    values:
+      milpa: repo find --authenticated "{{ Current }}"
+      suggest-only: true
 options:
   target:
     description: a path to clone this repo to

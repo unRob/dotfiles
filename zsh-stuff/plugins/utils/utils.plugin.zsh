@@ -1,15 +1,6 @@
 # shellcheck shell=bash
-ip (){
-  # resolve a hostname to an ip address
-  dig -t A "${${color%/}##*/}" +short
-}
 
-running () {
-  # find a running process
-  ps ax | grep "$1" | grep -v grep
-}
-
-wt () {
+tab_title () {
   # sets window title
   echo -ne "\e]1;$1\a"
 }

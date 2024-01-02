@@ -1,0 +1,21 @@
+#!/usr/bin/osascript -l JavaScript
+
+function run() {
+  ObjC.import("stdlib")
+
+  var opts = {}
+  var app = Application.currentApplication()
+  app.includeStandardAdditions = true
+
+  if ($.getenv("MILPA_OPT_TITLE") != "") {
+    opts.withTitle = $.getenv("MILPA_OPT_TITLE")
+  } else {
+    opts.withTitle = $.getenv("MILPA_COMMAND_NAME")
+  }
+
+  if ($.getenv("MILPA_OPT_SOUND") != "") {
+    opts.sound = $.getenv("MILPA_OPT_SOUND")
+  }
+
+  app.displayNotification($.getenv("MILPA_ARG_MESSAGE"), opts)
+}
