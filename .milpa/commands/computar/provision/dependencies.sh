@@ -2,7 +2,7 @@
 
 @milpa.load_util user-input
 
-base="$DOTFILES_PATH/brewfiles/"
+base="$HOME/.dotfiles/brewfiles/"
 brewfile="$HOME/.Brewfile"
 
 case "$(uname -s)" in
@@ -86,7 +86,7 @@ while read -r plugin version; do
     @milpa.log success "asdf: $plugin version $version is already installed"
     continue
   fi
-  
+
   @milpa.log info "Installing $plugin version $version..."
   asdf install "$plugin" "$version" || @milpa.fail "Could not install $plugin version $version"
   @milpa.log success "$plugin version $version installed"

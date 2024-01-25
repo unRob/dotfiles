@@ -7,10 +7,12 @@ so yeah, i've got a bunch of configs for my shell stuff.
 On a brand new system:
 
 ```sh
+# make macos behave like regular OSes
+xcode-select --install
 # install milpa
 curl -L https://milpa.dev/install.sh | bash -
 # get the scripts
-milpa itself repo install github.com/unRob/dotfiles
+milpa itself repo install https://github.com/unRob/dotfiles.git
 milpa computar bootstrap [fun|profit]
 ```
 
