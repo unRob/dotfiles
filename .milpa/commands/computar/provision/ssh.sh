@@ -36,8 +36,13 @@ if [[ "$COMPUTAR_PROFILE" == "fun" ]]; then
   @milpa.log success "SSH config fetched"
 else
   mkdir -p "$HOME/.ssh"
-  ssh-keygen -t ed25519 -C "$COMPUTAR_USER_EMAIL" || @milpa.fail "Could not create ssh key"
-  @milpa.log success "SSH key generated"
+  key="${HOME}/.ssh/id_ed25519"
+  if [[ -f "$key" ]]; then
+    @milpa.log warning "SSH key already present at $key, skipping key generation"
+  else
+    ssh-keygen -t ed25519 -C "$COMPUTAR_USER_EMAIL" || @milpa.fail "Could not create ssh key"
+    @milpa.log success "SSH key generated"
+  fi
 
   @milpa.log info "Uploading key to github"
   gh_pat=$(@milpa.ask "Enter a token from https://github.com/settings/personal-access-tokens/new :")
@@ -45,7 +50,7 @@ else
   if curl --silent \
     --fail --show-error \
     -H "Authorization: Bearer $gh_pat" \
-    --data "{\"title\":\"$COMPUTAR_USER_EMAIL\",\"key\":\"$(cat "${HOME}/.ssh/id_ed25519.pub")\"}" \
+    --data "{\"title\":\"$COMPUTAR_USER_EMAIL\",\"key\":\"$(cat "$key.pub")\"}" \
     https://api.github.com/user/keys > gh-result; then
     rm gh-result
     @milpa.log success "SSH key uploaded to github"
