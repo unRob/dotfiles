@@ -50,7 +50,7 @@ $(awk '{$1 = "-"; print $0}' <<<"$uuid")"
 fi
 
 case "$MILPA_OPT_FIELD" in
-  "otp") exec op item get --field type=otp --format json "${uuid%% *}" | jq -r .totp ;;
-  .) exec op item get "${uuid%% *}" --format json | jq '.fields | map({(.label): .value}) | add' ;;
-  *) exec op item get "${uuid%% *}" --field "label=${MILPA_OPT_FIELD}" ;;
+  "otp") exec op item get --reveal --field type=otp --format json "${uuid%% *}" | jq -r .totp ;;
+  .) exec op item get "${uuid%% *}" --reveal --format json | jq '.fields | map({(.label): .value}) | add' ;;
+  *) exec op item get "${uuid%% *}" --reveal --field "label=${MILPA_OPT_FIELD}" ;;
 esac

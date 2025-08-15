@@ -44,7 +44,7 @@ else
 
   if curl --silent -u "unrob:$gh_pat" \
     --fail --show-error \
-    --data "{\"title\":\"$COMPUTAR_USER_EMAIL\",\"key\":\"$(cat "${HOME}/id_ed25519.pub")\"}" \
+    --data "{\"title\":\"$COMPUTAR_USER_EMAIL\",\"key\":\"$(cat "${HOME}/.ssh/id_ed25519.pub")\"}" \
     https://api.github.com/user/keys > gh-result; then
     rm gh-result
     @milpa.log success "SSH key uploaded to github"

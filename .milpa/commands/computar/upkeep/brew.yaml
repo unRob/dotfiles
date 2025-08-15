@@ -1,0 +1,7 @@
+summary: upgrades software, including homebrew, and cleans up dependencies and caches
+description: |
+  A wrapper to run `brew upgrade && brew autoremove && brew cleanup`, which:
+
+  - keeps all homebrew-installed software up to date,
+  - removes no longer needed dependencies, and,
+  - cleans up any stale locks and outadated downloads and formulae.
