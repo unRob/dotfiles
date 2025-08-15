@@ -1,12 +1,6 @@
 # props @jaimerodas/.dotfiles
 cask_args appdir: "/Applications"
 
-tap "homebrew/cask"
-# https://github.com/Homebrew/homebrew-services
-tap "homebrew/services"
-# oss fonts
-tap "homebrew/cask-fonts"
-
 # https://github.com/AlDanial/cloc
 brew "cloc"
 brew "coreutils"
@@ -15,8 +9,7 @@ brew "git-delta"
 brew "exiftool"
 brew "ffmpeg"
 brew "fswatch"
-# gifsicle --lossy
-brew "giflossy"
+brew "gifsicle"
 brew "git"
 brew "git-lfs"
 brew "gnupg"
