@@ -15,7 +15,7 @@ fi
 
 [[ ! -d "$HOME/.dotfiles" ]] && ln -sfv "$repo" "$HOME/.dotfiles"
 
-[[ -d "$repo/oh-my-zsh" ]] || milpa repo clone robbyrussell/oh-my-zsh --target "$repo/oh-my-zsh" --ignore-existing || @milpa.fail "Could not clone oh-my-zsh"
+[[ -d "$repo/oh-my-zsh" ]] || milpa repo clone ohmyzsh/ohmyzsh --target "$repo/oh-my-zsh" --ignore-existing || @milpa.fail "Could not clone oh-my-zsh"
 
 @milpa.log info "aliasing dotfiles"
 for dotfile in "$repo/"*.dotfile; do
