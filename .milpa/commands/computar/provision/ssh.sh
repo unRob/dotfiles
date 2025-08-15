@@ -40,10 +40,11 @@ else
   @milpa.log success "SSH key generated"
 
   @milpa.log info "Uploading key to github"
-  gh_pat=$(@milpa.ask "Enter a token from https://github.com/settings/tokens/new :")
+  gh_pat=$(@milpa.ask "Enter a token from https://github.com/settings/personal-access-tokens/new :")
 
-  if curl --silent -u "unrob:$gh_pat" \
+  if curl --silent \
     --fail --show-error \
+    -H "Authorization: Bearer $gh_pat" \
     --data "{\"title\":\"$COMPUTAR_USER_EMAIL\",\"key\":\"$(cat "${HOME}/.ssh/id_ed25519.pub")\"}" \
     https://api.github.com/user/keys > gh-result; then
     rm gh-result
