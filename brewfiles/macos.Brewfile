@@ -1,6 +1,7 @@
 # props @jaimerodas/.dotfiles
 cask_args appdir: "/Applications"
 
+brew "asdf"
 # https://github.com/AlDanial/cloc
 brew "cloc"
 brew "coreutils"
@@ -35,7 +36,6 @@ brew "glow"
 brew "sqlite"
 
 cask "iterm2"
-cask "rar"
 cask "visual-studio-code"
 
 # quicklook source highlighter
@@ -44,7 +44,6 @@ cask "qlcolorcode"
 cask "qlmarkdown"
 # quicklook text/plain
 cask "qlstephen"
-cask "quicklook-json"
 # nice ligatures for programming
 cask "font-fira-code"
 
@@ -57,3 +56,8 @@ cask "the-unarchiver"
 
 # window management
 cask "rectangle"
+
+# ntfs
+cask "macfuse"
+# write access to linux's filesystem via vm
+cask "nohajc/anylinuxfs/anylinuxfs"

@@ -56,17 +56,6 @@ if [[ "$os" == "macos" ]]; then
   fi
 fi
 
-if [[ ! -d "${HOME}/.asdf" ]]; then
-  @milpa.log info "Installing asdf version manager..."
-  git clone https://github.com/asdf-vm/asdf.git "${HOME}/.asdf" --branch v0.8.0 || @milpa.fail "Could not clone asdf-vm"
-  @milpa.log success "Installed asdf-vm"
-
-  # shellcheck disable=1091
-  source "$HOME/.asdf/asdf.sh"
-else
-  @milpa.log success "asdf installed"
-fi
-
 @milpa.log info "installing tools from .tool-versions..."
 while read -r plugin; do
   if asdf plugin list | grep -m1 "$plugin" >/dev/null; then

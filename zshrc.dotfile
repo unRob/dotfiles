@@ -16,6 +16,13 @@ export COMPLETION_WAITING_DOTS="true"
 export ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
 
 
+HISTSIZE=100000000
+SAVEHIST=100000000
+# share history between sessions
+# https://zsh.sourceforge.io/Doc/Release/Options.html#index-HISTEXPIREDUPSFIRST
+setopt HIST_EXPIRE_DUPS_FIRST SHARE_HISTORY
+
+
 # ----------------
 # Plugins
 # ----------------

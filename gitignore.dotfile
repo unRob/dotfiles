@@ -1,3 +1,5 @@
 .DS_Store
 .nginx
 venv
+
+**/.claude/settings.local.json

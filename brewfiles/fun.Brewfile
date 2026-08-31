@@ -9,8 +9,6 @@ cask "google-chrome"
 
 cask "steam"
 
-mas "AdBlock", id: 1402042596
-
 # apple stuff
 mas "GarageBand", id: 682658836
 mas "iMovie", id: 408981434
